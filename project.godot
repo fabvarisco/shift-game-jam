@@ -14,6 +14,11 @@ config/name="shift-rpg-game-jam"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Player="*res://scripts/singletons/player.gd"
+World="*res://scripts/singletons/world.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
