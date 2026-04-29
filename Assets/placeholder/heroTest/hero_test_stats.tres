@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=4 format=3 uid="uid://brjajlsuu7o3f"]
+
+[ext_resource type="Script" uid="uid://caved0l2c4nol" path="res://scripts/resources/trait_data.gd" id="1_pum6v"]
+[ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_stats.gd" id="2_7bdpt"]
+[ext_resource type="SpriteFrames" uid="uid://bed1pkh2mlun8" path="res://Assets/placeholder/heroTest/hero_test.tres" id="3_7bdpt"]
+
+[resource]
+script = ExtResource("2_7bdpt")
+name = "Hero"
+sprite = ExtResource("3_7bdpt")
+metadata/_custom_type_script = "uid://crxa525j8eiet"

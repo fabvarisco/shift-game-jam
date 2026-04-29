@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmqhpiv2emd11"]
+[gd_scene load_steps=9 format=3 uid="uid://bmqhpiv2emd11"]
 
 [ext_resource type="PackedScene" uid="uid://cnh8hyqnkk2mp" path="res://Assets/placeholder/sprites/entity_combat.tscn" id="1_cwqfg"]
 [ext_resource type="Texture2D" uid="uid://f7sfriqtdtvt" path="res://Assets/placeholder/sprites/boss_placeholder.png" id="2_d6r8d"]
+[ext_resource type="Script" uid="uid://dxtq3orelormk" path="res://scripts/combat/entity_combat.gd" id="2_wt23e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wt23e"]
 atlas = ExtResource("2_d6r8d")
@@ -40,7 +41,9 @@ animations = [{
 }]
 
 [node name="EntityCombat" instance=ExtResource("1_cwqfg")]
+script = ExtResource("2_wt23e")
 
 [node name="Sprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_sr4gj")
+autoplay = "default"
 frame_progress = 0.6887674

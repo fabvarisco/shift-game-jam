@@ -2,6 +2,7 @@ class_name EntityStats
 extends Resource
 
 @export var name: String
+@export var sprite: SpriteFrames
 
 @export_group("Core Traits")
 @export var mental: TraitData = TraitData.new()
