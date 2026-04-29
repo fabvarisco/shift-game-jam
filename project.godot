@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="shift-rpg-game-jam"
+run/main_scene="uid://d2j67qiy4o7p3"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,7 +20,12 @@ config/icon="res://icon.svg"
 Player="*res://scripts/singletons/player.gd"
 World="*res://scripts/singletons/world.gd"
 
+[display]
+
+window/per_pixel_transparency/allowed=true
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
