@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityStats" load_steps=7 format=3 uid="uid://b1warriortst1"]
+[gd_resource type="Resource" script_class="EntityStats" load_steps=9 format=3 uid="uid://b1warriortst1"]
 
 [ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_stats.gd" id="1_stats"]
 [ext_resource type="Script" uid="uid://caved0l2c4nol" path="res://scripts/resources/trait_data.gd" id="2_trait"]
@@ -7,26 +7,45 @@
 [sub_resource type="Resource" id="Resource_body"]
 script = ExtResource("2_trait")
 keywords = Array[String](["Strong", "Resilient"])
-dice = 3
+description = "A body forged by years of combat and hardship."
+die = 1
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
-[sub_resource type="Resource" id="Resource_mental"]
+[sub_resource type="Resource" id="Resource_focus_primary"]
 script = ExtResource("2_trait")
-drawbacks = Array[String](["Hot-headed"])
-keywords = Array[String](["Tactics"])
+keywords = Array[String](["strike", "endure"])
+description = "Years of battle have turned combat into second nature."
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[sub_resource type="Resource" id="Resource_focus_secondary"]
+script = ExtResource("2_trait")
+keywords = Array[String](["protect", "intercept"])
+description = "A stalwart defender who puts their body between blade and ally."
+die = 1
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[sub_resource type="Resource" id="Resource_mind"]
+script = ExtResource("2_trait")
+description = "Not a natural strategist, but reads the battlefield through instinct."
+die = 3
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [sub_resource type="Resource" id="Resource_soul"]
 script = ExtResource("2_trait")
 keywords = Array[String](["Brave"])
-dice = 1
+description = "Fearless in the face of danger, rallying allies through action."
+die = 2
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [resource]
 script = ExtResource("1_stats")
 name = "Warrior"
 sprite = ExtResource("3_frames")
-mental = SubResource("Resource_mental")
+mind = SubResource("Resource_mind")
 body = SubResource("Resource_body")
 soul = SubResource("Resource_soul")
+focus_traits = Dictionary[String, ExtResource("2_trait")]({
+"Battle Hardened": SubResource("Resource_focus_primary"),
+"Warrior's Shield": SubResource("Resource_focus_secondary")
+})
 metadata/_custom_type_script = "uid://crxa525j8eiet"

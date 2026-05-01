@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bavwijjwwwt7a"]
+[gd_scene load_steps=8 format=3 uid="uid://bavwijjwwwt7a"]
 
 [ext_resource type="PackedScene" uid="uid://d2j67qiy4o7p3" path="res://scenes/combat/combat_master.tscn" id="1_3pn2o"]
-[ext_resource type="PackedScene" uid="uid://du48cpbxgkshn" path="res://scenes/combat/combat_ui.tscn" id="2_yb411"]
 [ext_resource type="PackedScene" uid="uid://wugy0pn73qjh" path="res://assets/placeholder/obstacle_1.tscn" id="3_ha2qg"]
 [ext_resource type="PackedScene" uid="uid://cnh8hyqnkk2mp" path="res://assets/placeholder/sprites/entity_combat.tscn" id="4_wc4or"]
 [ext_resource type="Resource" uid="uid://b1warriortst1" path="res://resources/characters/character_warrior.tres" id="5_hocni"]
@@ -10,8 +9,6 @@
 [ext_resource type="Resource" uid="uid://b4bosstest01" path="res://resources/characters/boss_test.tres" id="8_hocni"]
 
 [node name="CombatSandbox" instance=ExtResource("1_3pn2o")]
-
-[node name="CombatUI" parent="." index="0" instance=ExtResource("2_yb411")]
 
 [node name="Obstacle1" parent="Enviroment" index="1" instance=ExtResource("3_ha2qg")]
 transform = Transform3D(0.36130092, 0, 0, 0, 0.5777379, 0, 0, 0, 0.33171624, 0.7425703, -0.15728432, 0)
@@ -43,7 +40,7 @@ transform = Transform3D(0.30754456, 0, -0.17409071, 0, 0.57773787, 0, 0.18961728
 [node name="Obstacle7" parent="Enviroment" index="10" instance=ExtResource("3_ha2qg")]
 transform = Transform3D(0.45176026, 0, -0.047334738, 0, 0.81777877, 0, 0.2785338, 0, 0.07677326, 0.49104583, -0.07794279, -0.7402838)
 
-[node name="Camera3D" parent="." index="2"]
+[node name="Camera3D" parent="." index="1"]
 transform = Transform3D(0.96073073, -0.07351903, 0.2675657, 0, 0.96426207, 0.26495034, -0.27748233, -0.2545459, 0.92639625, 0.3956747, 0.3575473, 0.9919565)
 
 [node name="Warrior" parent="PlayerParty" index="0" instance=ExtResource("4_wc4or")]
