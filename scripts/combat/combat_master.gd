@@ -1,6 +1,6 @@
 extends Node3D
 
-const ENTITY_SCENE: PackedScene = preload("res://Assets/placeholder/sprites/entity_combat.tscn")
+const ENTITY_SCENE: PackedScene = preload("res://assets/placeholder/sprites/entity_combat.tscn")
 const PARTY_SPACING := 0.6
 
 @onready var player_party_node: Node3D = $PlayerParty

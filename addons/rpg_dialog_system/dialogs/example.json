@@ -1,0 +1,25 @@
+{
+  "entries": [
+	{
+	  "text": "DIALOG_ELDER_001",
+	  "name": "NPC_ELDER_NAME",
+	  "position": "bottom"
+	},
+	{
+	  "text": "DIALOG_ELDER_002",
+	  "name": "NPC_ELDER_NAME",
+	  "face_sprite": "res://icon.svg",
+	  "position": "bottom"
+	},
+	{
+	  "text": "DIALOG_ELDER_003",
+	  "name": "NPC_ELDER_NAME",
+	  "face_sprite": "res://icon.svg",
+	  "position": "top"
+	},
+	{
+	  "text": "...",
+	  "position": "center"
+	}
+  ]
+}

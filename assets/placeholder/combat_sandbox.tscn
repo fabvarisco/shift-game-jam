@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d2j67qiy4o7p3" path="res://scenes/combat/combat_master.tscn" id="1_3pn2o"]
 [ext_resource type="PackedScene" uid="uid://du48cpbxgkshn" path="res://scenes/combat/combat_ui.tscn" id="2_yb411"]
-[ext_resource type="PackedScene" uid="uid://wugy0pn73qjh" path="res://Assets/placeholder/obstacle_1.tscn" id="3_ha2qg"]
-[ext_resource type="PackedScene" uid="uid://cnh8hyqnkk2mp" path="res://Assets/placeholder/sprites/entity_combat.tscn" id="4_wc4or"]
+[ext_resource type="PackedScene" uid="uid://wugy0pn73qjh" path="res://assets/placeholder/obstacle_1.tscn" id="3_ha2qg"]
+[ext_resource type="PackedScene" uid="uid://cnh8hyqnkk2mp" path="res://assets/placeholder/sprites/entity_combat.tscn" id="4_wc4or"]
 [ext_resource type="Resource" uid="uid://b1warriortst1" path="res://resources/characters/character_warrior.tres" id="5_hocni"]
 [ext_resource type="Resource" uid="uid://b2magetst001" path="res://resources/characters/character_mage.tres" id="6_j478s"]
 [ext_resource type="Resource" uid="uid://b3priesttst1" path="res://resources/characters/character_priest.tres" id="7_ivqgg"]

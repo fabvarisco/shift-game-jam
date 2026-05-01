@@ -19,10 +19,19 @@ config/icon="res://icon.svg"
 
 Player="*res://scripts/singletons/player.gd"
 World="*res://scripts/singletons/world.gd"
+DialogManager="*res://addons/rpg_dialog_system/dialog_manager.gd"
 
 [display]
 
 window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/rpg_dialog_system/plugin.cfg")
+
+[network]
+
+tls/certificate_bundle_override="/etc/ssl/certs/ca-certificates.crt"
 
 [rendering]
 
