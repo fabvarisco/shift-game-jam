@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnh8hyqnkk2mp"]
+
+[ext_resource type="Script" uid="uid://dxtq3orelormk" path="res://scripts/combat/entity_combat.gd" id="1_script"]
+
+[node name="EntityCombat" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+texture_filter = 0
+autoplay = "default"

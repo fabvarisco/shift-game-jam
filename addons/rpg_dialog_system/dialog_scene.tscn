@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://t0aybyt3dyu4"]
+
+[ext_resource type="Script" uid="uid://dx6a0ikmjd38t" path="res://addons/rpg_dialog_system/dialog_scene.gd" id="1_dlgscn"]
+
+[node name="DialogScene" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_dlgscn")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LargeSprite" type="TextureRect" parent="Root"]
+visible = false
+layout_mode = 0
+expand_mode = 1
+
+[node name="DialogBox" type="PanelContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/DialogBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/DialogBox/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NameLabel" type="Label" parent="Root/DialogBox/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/DialogBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="FaceSprite" type="TextureRect" parent="Root/DialogBox/MarginContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialogText" type="RichTextLabel" parent="Root/DialogBox/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="ButtonsRow" type="HBoxContainer" parent="Root/DialogBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="SkipButton" type="Button" parent="Root/DialogBox/MarginContainer/VBoxContainer/ButtonsRow"]
+layout_mode = 2
+text = "Skip"
+
+[node name="Spacer" type="Control" parent="Root/DialogBox/MarginContainer/VBoxContainer/ButtonsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="Root/DialogBox/MarginContainer/VBoxContainer/ButtonsRow"]
+layout_mode = 2
+disabled = true
+text = "← Back"
+
+[node name="NextButton" type="Button" parent="Root/DialogBox/MarginContainer/VBoxContainer/ButtonsRow"]
+layout_mode = 2
+text = "Next →"
+
+[node name="TypewriterTimer" type="Timer" parent="."]
+wait_time = 0.05

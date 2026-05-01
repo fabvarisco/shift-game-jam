@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://d2j67qiy4o7p3"]
+[gd_scene load_steps=4 format=3 uid="uid://d2j67qiy4o7p3"]
+
+[ext_resource type="PackedScene" uid="uid://ct5i8gwhnjwpg" path="res://assets/placeholder/floor.tscn" id="1_gs0pq"]
+[ext_resource type="Script" uid="uid://bmpv346a56miu" path="res://scripts/combat/combat_master.gd" id="1_ttqmc"]
+
+[sub_resource type="Environment" id="Environment_gs0pq"]
+background_mode = 1
+ambient_light_color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 
 [node name="CombatMaster" type="Node3D"]
+script = ExtResource("1_ttqmc")
+
+[node name="Enviroment" type="Node3D" parent="."]
+
+[node name="Floor" parent="Enviroment" instance=ExtResource("1_gs0pq")]
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.96426207, 0.2649503, 0, -0.2649503, 0.96426207, 0, 0.41675848, 1.2831707)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gs0pq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0566134, 0)
+
+[node name="PlayerParty" type="Node3D" parent="."]
+
+[node name="EnemyParty" type="Node3D" parent="."]

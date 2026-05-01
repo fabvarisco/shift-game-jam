@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="shift-rpg-game-jam"
+run/main_scene="uid://d2j67qiy4o7p3"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,8 +19,22 @@ config/icon="res://icon.svg"
 
 Player="*res://scripts/singletons/player.gd"
 World="*res://scripts/singletons/world.gd"
+DialogManager="*res://addons/rpg_dialog_system/dialog_manager.gd"
+
+[display]
+
+window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/rpg_dialog_system/plugin.cfg")
+
+[network]
+
+tls/certificate_bundle_override="/etc/ssl/certs/ca-certificates.crt"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

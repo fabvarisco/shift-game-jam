@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cot7y5t2fn1b7"
+
+[deps]
+
+files=["res://addons/rpg_dialog_system/dialogs/example.en.translation", "res://addons/rpg_dialog_system/dialogs/example.pt_BR.translation"]
+
+source_file="res://addons/rpg_dialog_system/dialogs/example.csv"
+dest_files=["res://addons/rpg_dialog_system/dialogs/example.en.translation", "res://addons/rpg_dialog_system/dialogs/example.pt_BR.translation"]
+
+[params]
+
+compress=true
+delimiter=0

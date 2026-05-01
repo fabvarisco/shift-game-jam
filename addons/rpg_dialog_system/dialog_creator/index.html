@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPG Dialog Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>RPG <span>Dialog</span> Editor</h1>
+  <div class="header-actions">
+    <div class="file-name-wrap">
+      <label for="file-name">File:</label>
+      <input type="text" id="file-name" value="dialog_01" placeholder="file name">
+    </div>
+    <button class="btn-ghost" onclick="exportJSON()">Export JSON</button>
+    <button class="btn-ghost" onclick="exportCSV()">Export CSV</button>
+    <button class="btn-primary" onclick="exportBoth()">⬇ Export Both</button>
+  </div>
+</header>
+
+<div id="languages-section">
+  <div class="section-label">Languages</div>
+  <div class="lang-row">
+    <div id="lang-chips"></div>
+    <div class="lang-add">
+      <input type="text" id="lang-input" placeholder="e.g. pt_BR" maxlength="12">
+      <button class="btn-ghost btn-sm" onclick="addLanguage()">+ Add</button>
+    </div>
+  </div>
+</div>
+
+<div id="entries-list"></div>
+
+<div id="add-btn-wrap">
+  <button class="btn-ghost" onclick="addEntry()">+ Add entry</button>
+</div>
+
+<div id="preview-section">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="json" onclick="switchTab('json')">JSON</button>
+    <button class="tab-btn" data-tab="csv" onclick="switchTab('csv')">CSV</button>
+  </div>
+  <div class="tab-panel active" data-tab="json">
+    <pre id="json-preview">{}</pre>
+  </div>
+  <div class="tab-panel" data-tab="csv">
+    <pre id="csv-preview"></pre>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

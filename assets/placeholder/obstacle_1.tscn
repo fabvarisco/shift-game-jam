@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wugy0pn73qjh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_63qre"]
+
+[node name="Obstacle1" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_63qre")

@@ -1,3 +1,4 @@
 extends Node
-var player_party = {}
-var player_last_pos = Vector3()
+
+var player_party: Array[EntityStats] = []
+var player_last_pos := Vector3()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bsce8uyi8yo1b"]
+
+[sub_resource type="GDScript" id="GDScript_vm2l6"]
+script/source = "class_name TraitData
+extends Resource
+
+@export var drawbacks: Array[String] = []
+@export var keywords: Array[String] = []
+@export var dice: Dice = 0
+"
+
+[resource]
+script = SubResource("GDScript_vm2l6")
