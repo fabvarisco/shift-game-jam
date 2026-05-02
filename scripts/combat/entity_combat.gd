@@ -3,7 +3,7 @@ class_name EntityCombat
 
 signal selected(entity: EntityCombat)
 
-@export var stats: EntityStats:
+@export var stats: EntityCharacter:
 	set(value):
 		stats = value
 		if is_node_ready():

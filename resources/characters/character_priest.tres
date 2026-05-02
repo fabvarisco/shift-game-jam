@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="EntityStats" load_steps=9 format=3 uid="uid://b3priesttst1"]
+[gd_resource type="Resource" script_class="EntityCharacter" load_steps=9 format=3 uid="uid://b3priesttst1"]
 
-[ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_stats.gd" id="1_stats"]
+[ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_character.gd" id="1_stats"]
 [ext_resource type="Script" uid="uid://caved0l2c4nol" path="res://scripts/resources/trait_data.gd" id="2_trait"]
 [ext_resource type="SpriteFrames" uid="uid://bed1pkh2mlun8" path="res://assets/placeholder/heroTest/hero_test.tres" id="3_frames"]
 

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="EntityStats" load_steps=3 format=3 uid="uid://b1qa0dt7sl2fr"]
+[gd_resource type="Resource" script_class="EntityCharacter" load_steps=3 format=3 uid="uid://b1qa0dt7sl2fr"]
 
 [ext_resource type="Script" uid="uid://caved0l2c4nol" path="res://scripts/resources/trait_data.gd" id="1_fp72p"]
-[ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_stats.gd" id="2_lg1bl"]
+[ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_character.gd" id="2_lg1bl"]
 
 [resource]
 script = ExtResource("2_lg1bl")

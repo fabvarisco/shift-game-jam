@@ -1,4 +1,4 @@
-class_name EntityStats
+class_name EntityCharacter
 extends Resource
 
 @export var name: String

@@ -11,7 +11,7 @@ func connect_to_master(master: Node) -> void:
 func _on_entity_selected(entity: EntityCombat) -> void:
 	_update_traits(entity.stats)
 
-func _update_traits(stats: EntityStats) -> void:
+func _update_traits(stats: EntityCharacter) -> void:
 	_clear(core_box)
 	_clear(focus_box)
 

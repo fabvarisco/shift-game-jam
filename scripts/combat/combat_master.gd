@@ -31,7 +31,7 @@ func _register_existing(parent: Node3D, is_player_side: bool) -> void:
 				child.selected.connect(_on_entity_selected)
 				player_entities.append(child)
 
-func _spawn_party(party: Array[EntityStats], parent: Node3D, side: float) -> void:
+func _spawn_party(party: Array[EntityCharacter], parent: Node3D, side: float) -> void:
 	for i in party.size():
 		var entity: EntityCombat = ENTITY_SCENE.instantiate()
 		entity.stats = party[i]
