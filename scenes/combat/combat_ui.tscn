@@ -13,6 +13,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PhaseLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 36.0
+grow_horizontal = 2
+text = "Combat"
+horizontal_alignment = 1
+
 [node name="TraitsControl" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 12
@@ -55,6 +68,115 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="ActionPanel" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -130.0
+offset_right = 180.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Control/ActionPanel"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+text = "Choose Action"
+horizontal_alignment = 1
+
+[node name="CoreTraitButtons" type="HBoxContainer" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+
+[node name="FocusTraitButtons" type="HBoxContainer" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+
+[node name="TargetLabel" type="Label" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+text = "Target:"
+
+[node name="TargetButtons" type="HBoxContainer" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+
+[node name="EnemyTraitLabel" type="Label" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+text = "Which trait to attack?"
+visible = false
+
+[node name="EnemyTraitButtons" type="HBoxContainer" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+visible = false
+
+[node name="ConfirmButton" type="Button" parent="Control/ActionPanel/VBox"]
+layout_mode = 2
+text = "Confirm"
+disabled = true
+
+[node name="ResultPanel" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -120.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Control/ResultPanel"]
+layout_mode = 2
+
+[node name="ResultTitle" type="Label" parent="Control/ResultPanel/VBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+
+[node name="ResultRolls" type="Label" parent="Control/ResultPanel/VBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ResultOutcome" type="Label" parent="Control/ResultPanel/VBox"]
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ResultContinue" type="Button" parent="Control/ResultPanel/VBox"]
+layout_mode = 2
+text = "Continue"
+
+[node name="LogPanel" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -100.0
+offset_right = 220.0
+offset_bottom = 100.0
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/LogPanel"]
+layout_mode = 2
+
+[node name="LogLabel" type="Label" parent="Control/LogPanel/ScrollContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+autowrap_mode = 2
+text = ""
+
 [node name="OrderControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -62,6 +184,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="OrderPanel" type="Panel" parent="OrderControl"]
 layout_mode = 1

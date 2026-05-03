@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxtq3orelormk" path="res://scripts/combat/entity_combat.gd" id="1_script"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_click"]
-size = Vector3(0.5, 1.0, 0.5)
+size = Vector3(0.5, 1, 0.5)
 
 [node name="EntityCombat" type="Node3D"]
 script = ExtResource("1_script")
