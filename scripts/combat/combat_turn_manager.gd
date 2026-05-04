@@ -132,6 +132,7 @@ func _check_enemy_defeated(enemy: EntityCombat) -> bool:
 	if not _is_enemy_defeated(enemy):
 		return false
 	log_message.emit("🏆 %s foi derrotado!" % enemy.get_display_name())
+	enemy.set_visible(false)
 	if enemies.all(func(e): return _is_enemy_defeated(e)):
 		_set_phase(Phase.COMBAT_END)
 		combat_ended.emit(true)
