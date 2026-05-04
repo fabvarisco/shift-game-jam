@@ -9,7 +9,7 @@ script = ExtResource("2_trait")
 drawbacks = Array[String](["Predictable"])
 keywords = Array[String](["Aggressive", "Reckless"])
 description = "Charges in without thinking."
-die = 3
+die = 0
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [sub_resource type="Resource" id="Resource_slash"]

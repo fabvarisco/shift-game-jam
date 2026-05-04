@@ -9,7 +9,7 @@ script = ExtResource("2_trait")
 drawbacks = Array[String](["Slow"])
 keywords = Array[String](["Vigilant", "Steady"])
 description = "Holds the line, hard to break through."
-die = 2
+die = 0
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [sub_resource type="Resource" id="Resource_shield"]

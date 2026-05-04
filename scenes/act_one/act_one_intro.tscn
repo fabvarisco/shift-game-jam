@@ -1,15 +1,134 @@
-[gd_scene load_steps=16 format=3 uid="uid://vmp2ii2toqg3"]
+[gd_scene load_steps=18 format=3 uid="uid://vmp2ii2toqg3"]
 
 [ext_resource type="PackedScene" uid="uid://cvbkkmul7gjvp" path="res://scenes/world/world_master.tscn" id="1_d2wrj"]
 [ext_resource type="Script" uid="uid://c7jd0ckgaikt8" path="res://scripts/act_one/act_one_intro.gd" id="2_52p74"]
-[ext_resource type="PackedScene" uid="uid://rd18npya1ycd" path="res://scenes/enviroment/vera_bedroom/vera_window.tscn" id="2_g7jvt"]
 [ext_resource type="PackedScene" uid="uid://wugy0pn73qjh" path="res://scenes/enviroment/obstacle_1.tscn" id="2_pldx6"]
-[ext_resource type="PackedScene" uid="uid://cv5bvgld7xkgy" path="res://scenes/enviroment/vera_bedroom/vera_bed_room_wall.tscn" id="3_j35fm"]
-[ext_resource type="PackedScene" uid="uid://36j2al3qkpi6" path="res://scenes/enviroment/vera_bedroom/bed.tscn" id="5_quwrf"]
+[ext_resource type="PackedScene" uid="uid://cv5bvgld7xkgy" path="res://scenes/enviroment/vera_house/vera_wall.tscn" id="3_j35fm"]
+[ext_resource type="PackedScene" uid="uid://uo3jhjiv2q6j" path="res://scenes/enviroment/vera_house/vera_wall_door.tscn" id="3_jllau"]
+[ext_resource type="PackedScene" uid="uid://36j2al3qkpi6" path="res://scenes/enviroment/vera_house/kitchen.tscn" id="5_quwrf"]
 [ext_resource type="PackedScene" uid="uid://e51lyl0rotgq" path="res://scenes/characters/vera_arm.tscn" id="6_52p74"]
 [ext_resource type="PackedScene" uid="uid://bof5l58yuu6er" path="res://scenes/characters/entity.tscn" id="6_wb2ix"]
+[ext_resource type="Texture2D" uid="uid://bsthmaiq3x1it" path="res://assets/effects/surprise.png" id="9_jllau"]
 
 [sub_resource type="Environment" id="Environment_j35fm"]
+
+[sub_resource type="Animation" id="Animation_fk2am"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.26144156, 0.15429959, 0.7418509)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Vera:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.54523754, 0.01811476, 0.017287433)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Vera:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Vera/Sprite3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WREN:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VeraArm:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qa8sx"]
+resource_name = "camera_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.26144156, 0.15429959, -1.0453312), Vector3(-0.26144156, 0.15429959, 0.7418509)]
+}
+
+[sub_resource type="Animation" id="Animation_jllau"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.94),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_52p74"]
 resource_name = "intro"
@@ -33,97 +152,71 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_jllau"]
-resource_name = "fade_out"
-length = 3.0
+[sub_resource type="Animation" id="Animation_rs7pb"]
+resource_name = "vera_wakeup"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Vera:rotation")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.94),
+"times": PackedFloat32Array(0, 0.97),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_fk2am"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
+"update": 1,
+"values": [Vector3(0, -3.1415925, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WREN:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Vera/Sprite3D:visible")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"times": PackedFloat32Array(0.06666666, 0.46666667, 0.82),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("VeraArm:visible")
-tracks/2/interp = 1
+tracks/2/path = NodePath("Camera3D:position")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(1, 1.95),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.26144156, 0.15429959, 0.7418509), Vector3(0.6940627, 0.15429959, 0.7418509)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WREN:position")
-tracks/3/interp = 1
+tracks/3/path = NodePath("Vera:position")
+tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(2.0666666, 2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.24848583, 0.004682854, -0.044877052)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Vera:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.37184352, -0.041940168, -0.29878718)]
+"values": [Vector3(-0.54523754, 0.01811476, 0.017287433), Vector3(0.15600318, 0.01811476, 0.017287433), Vector3(0.27384347, 0.01811476, 0.017287433)]
 }
 
-[sub_resource type="Animation" id="Animation_rs7pb"]
-resource_name = "vera_wakeup"
+[sub_resource type="Animation" id="Animation_iqmmh"]
+resource_name = "wren_get_arm"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("WREN:rotation")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.15333335, 0.3),
+"times": PackedFloat32Array(0, 0.96666664),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0)]
 }
 tracks/1/type = "value"
@@ -133,59 +226,20 @@ tracks/1/path = NodePath("VeraArm:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.14),
+"times": PackedFloat32Array(0, 0.51),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_iqmmh"]
-resource_name = "wren_run"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WREN:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.1415927, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WREN:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.19999999, 0.54, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.24848583, 0.004682854, -0.044877052), Vector3(0.15486893, 0.004682854, -0.31722897), Vector3(0.15486893, 0.004682854, -0.31722897), Vector3(0.15486893, 0.07106824, -0.47176152)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Vera:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.2, 0.31, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.37184352, -0.041940168, -0.29878718), Vector3(-0.37184352, -0.041940168, -0.29878718), Vector3(-0.37184352, 0.033335418, -0.29878718), Vector3(-0.37184352, 0.033335418, -0.29878718), Vector3(-0.22239687, 0.006629005, -0.29878718)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jllau"]
 _data = {
 &"RESET": SubResource("Animation_fk2am"),
+&"camera_start": SubResource("Animation_qa8sx"),
 &"fade_out": SubResource("Animation_jllau"),
 &"intro": SubResource("Animation_52p74"),
 &"vera_wakeup": SubResource("Animation_rs7pb"),
-&"wren_run": SubResource("Animation_iqmmh")
+&"wren_get_arm": SubResource("Animation_iqmmh")
 }
 
 [node name="ActOneIntro" instance=ExtResource("1_d2wrj")]
@@ -195,41 +249,43 @@ script = ExtResource("2_52p74")
 transform = Transform3D(1.1693699, 0, 0, 0, 1, 0, 0, 0, 0.38948166, 0, 0, 0)
 
 [node name="Camera3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074706614, 0.15429959, 0.5772039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26144156, 0.15429959, 0.7418509)
 environment = SubResource("Environment_j35fm")
 fov = 44.546173
 
-[node name="VeraWindow" parent="Enviroment" index="0" instance=ExtResource("2_g7jvt")]
-transform = Transform3D(0.27886665, 0, 0, 0, 0.16761753, 0, 0, 0, 0.031888083, 0.17077795, 0.14888516, -0.39381075)
+[node name="VeraBedRoomWallDoor" parent="Enviroment" index="0" instance=ExtResource("3_jllau")]
+transform = Transform3D(-3.7516337e-08, 0, 0.016577156, 0, 0.79979795, 0, -0.85827374, 0, -7.2461054e-10, 0.25528514, 0.10365379, 0)
 
 [node name="VeraBedRoomWall" parent="Enviroment" index="1" instance=ExtResource("3_j35fm")]
-transform = Transform3D(2.7719822, 0, 0, 0, 1.3104627, 0, 0, 0, 0.016577156, 0.060881425, 0.23413265, -0.41466916)
-skeleton = NodePath("../..")
+transform = Transform3D(2.7719822, 0, 0, 0, 1.3104627, 0, 0, 0, 0.016577156, 0.50031376, 0.23413265, -0.41466916)
 
 [node name="VeraBedRoomWall2" parent="Enviroment" index="2" instance=ExtResource("3_j35fm")]
-transform = Transform3D(0.18684761, 0, 0.016539456, 0, 1.3104628, 0, -2.7656782, 0, 0.001117396, -0.5592777, 0.23413265, -0.41466916)
-skeleton = NodePath("../..")
+transform = Transform3D(0.18684761, 0, 0.016539456, 0, 1.3104628, 0, -2.7656782, 0, 0.001117396, -1.0126066, 0.23413265, 0.8865377)
 
 [node name="VeraBedRoomWall3" parent="Enviroment" index="3" instance=ExtResource("3_j35fm")]
-transform = Transform3D(0.18684761, 0, 0.016539456, 0, 1.3104628, 0, -2.7656782, 0, 0.001117396, 0.48991638, 0.23413265, -0.41466916)
-skeleton = NodePath("../..")
+transform = Transform3D(0.18684761, 0, 0.016539456, 0, 1.3104628, 0, -2.7656782, 0, 0.001117396, 1.2148056, 0.22206366, -0.4164343)
 
 [node name="Obstacle1" parent="Enviroment" index="4" instance=ExtResource("2_pldx6")]
-transform = Transform3D(0.10560136, 0, 0, 0, 0.15353805, 0, 0, 0, 0.16913438, 0.35931724, 0, -0.040114522)
+transform = Transform3D(0.10560136, 0, 0, 0, 0.15353805, 0, 0, 0, 0.16913438, 1.0543685, -0.020980075, -0.040114522)
 skeleton = NodePath("../..")
 
 [node name="Bed" parent="Enviroment" index="5" instance=ExtResource("5_quwrf")]
-transform = Transform3D(0.18516034, 0, 0, 0, 0.043581784, 0, 0, 0, 0.35570306, -0.36459824, 0, -0.17509443)
+transform = Transform3D(0.18516034, 0, 0, 0, 0.13010578, 0, 0, 0, 0.35570306, -0.70769167, -0.00048074126, 0)
 skeleton = NodePath("../..")
 
 [node name="VeraArm" parent="." index="5" instance=ExtResource("6_52p74")]
-transform = Transform3D(0.4167398, 0, 0, 0, 0.3450062, 0.32713163, 0, -0.2399374, 0.47038284, 0.3592913, 0.05590281, 0)
+transform = Transform3D(0.4167398, 0, 0, 0, 0.3450062, 0.32713163, 0, -0.2399374, 0.47038284, 1.0424757, 0.05590281, 0)
 
 [node name="Vera" parent="." index="6" instance=ExtResource("6_wb2ix")]
-transform = Transform3D(0.78900725, 0, 0, 0, 0.6648905, 0, 0, 0, 1, -0.37184352, -0.041940168, -0.29878718)
+transform = Transform3D(-0.78900725, 0, -1.509958e-07, 0, 0.6648905, 0, 1.19136786e-07, 0, -1, -0.54523754, 0.01811476, 0.017287433)
+
+[node name="Sprite3D" type="Sprite3D" parent="Vera" index="1"]
+transform = Transform3D(0.18799308, 0, -8.526513e-14, 0, 0.2563281, 0, 6.217249e-15, 0, 0.99999994, -0.036312103, 0.19613113, 4.656613e-10)
+visible = false
+texture = ExtResource("9_jllau")
 
 [node name="WREN" parent="." index="7" instance=ExtResource("6_wb2ix")]
-transform = Transform3D(0.78900725, 0, 0, 0, 0.6648905, 0, 0, 0, 1, 0.24848583, 0.004682854, -0.044877052)
+transform = Transform3D(0.78900725, 0, 0, 0, 0.6648905, 0, 0, 0, 1, 0.96880865, -0.002629891, -0.030018613)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
 

@@ -148,10 +148,10 @@ func _check_player_defeated(player: EntityCombat) -> bool:
 	return true
 
 func _is_enemy_defeated(enemy: EntityCombat) -> bool:
-	return enemy.combat_state != null and enemy.combat_state.is_core_exhausted()
+	return enemy.is_defeated()
 
 func _is_player_defeated(player: EntityCombat) -> bool:
-	return player.combat_state != null and player.combat_state.is_core_exhausted()
+	return player.is_defeated()
 
 func _set_phase(phase: Phase) -> void:
 	current_phase = phase

@@ -9,7 +9,7 @@ texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_63qre"]
 
-[node name="Bed" type="MeshInstance3D"]
-transform = Transform3D(0.18516034, 0, 0, 0, 0.043581784, 0, 0, 0, 0.35570306, 0, 0, 0)
+[node name="kitchen" type="MeshInstance3D"]
+transform = Transform3D(0.18516034, 0, 0, 0, 0.13010578, 0, 0, 0, 0.35570306, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_dc611")
 mesh = SubResource("BoxMesh_63qre")

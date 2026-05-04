@@ -22,14 +22,18 @@ func fade_out_canvas() -> void:
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if _anim_name == "fade_out":
+		animation_player.play("camera_start")
+	if _anim_name == "camera_start":
 		animation_player.play("vera_wakeup")
 	if _anim_name == "vera_wakeup":
-		#play vera wakeup dialog
-		#when vera wakeup dialog end play wren_run
+		#call vera wakeup dialog
+		#when vera wakeup dialog end play wren_get_arm
+		pass
+	if _anim_name == "wren_get_arm":
+		#call wren_get_arm dialog
+		#when dialog end play wren_run 
 		pass
 	if _anim_name == "wren_run":
-		#play vera angry dialog
+		#call vera angry dialog
+		#and then end the cutscene and start gameplay
 		pass
-
-
-# after play

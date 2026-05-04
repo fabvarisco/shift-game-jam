@@ -52,6 +52,14 @@ func set_selected(value: bool) -> void:
 	else:
 		sprite.modulate = Color(0.7, 0.7, 0.7) if acted else Color.WHITE
 
+func is_defeated() -> bool:
+	if combat_state == null:
+		return false
+	if stats is EnemyEntity:
+		var threshold := (stats as EnemyEntity).get_traits_to_exhaust()
+		return combat_state.exhausted_count() >= threshold
+	return combat_state.is_core_exhausted()
+
 func set_acted(value: bool) -> void:
 	acted = value
 	if not _is_selected:
