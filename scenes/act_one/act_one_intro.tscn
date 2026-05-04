@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vmp2ii2toqg3"]
+[gd_scene load_steps=19 format=3 uid="uid://vmp2ii2toqg3"]
 
 [ext_resource type="PackedScene" uid="uid://cvbkkmul7gjvp" path="res://scenes/world/world_master.tscn" id="1_d2wrj"]
 [ext_resource type="Script" uid="uid://c7jd0ckgaikt8" path="res://scripts/act_one/act_one_intro.gd" id="2_52p74"]
@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.26144156, 0.15429959, 0.7418509)]
+"values": [Vector3(-0.26144156, 0.15429959, -1.2236705)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -97,6 +97,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WREN:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.96880865, -0.002629891, -0.030018613)]
 }
 
 [sub_resource type="Animation" id="Animation_qa8sx"]
@@ -232,6 +244,22 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_b2qmk"]
+resource_name = "wren_run"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WREN:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 1.38, 1.55, 1.69),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.96880865, -0.002629891, -0.030018613), Vector3(0.96880865, -0.002629891, -0.3601616), Vector3(0.96880865, 0.14069061, -0.3601616), Vector3(0.969, 0.141, -0.428), Vector3(0.969, -0.0508177, -0.42800003)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jllau"]
 _data = {
 &"RESET": SubResource("Animation_fk2am"),
@@ -239,7 +267,8 @@ _data = {
 &"fade_out": SubResource("Animation_jllau"),
 &"intro": SubResource("Animation_52p74"),
 &"vera_wakeup": SubResource("Animation_rs7pb"),
-&"wren_get_arm": SubResource("Animation_iqmmh")
+&"wren_get_arm": SubResource("Animation_iqmmh"),
+&"wren_run": SubResource("Animation_b2qmk")
 }
 
 [node name="ActOneIntro" instance=ExtResource("1_d2wrj")]
@@ -249,7 +278,7 @@ script = ExtResource("2_52p74")
 transform = Transform3D(1.1693699, 0, 0, 0, 1, 0, 0, 0, 0.38948166, 0, 0, 0)
 
 [node name="Camera3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26144156, 0.15429959, 0.7418509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26144156, 0.15429959, -1.2236705)
 environment = SubResource("Environment_j35fm")
 fov = 44.546173
 

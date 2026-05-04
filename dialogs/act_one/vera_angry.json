@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "text": "VERA_ANGRY_01",
+      "name": "VERA_NAME",
+      "position": "bottom"
+    },
+    {
+      "text": "TUTORIAL_WASD",
+      "position": "center"
+    }
+  ]
+}
