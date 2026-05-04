@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyEntity" load_steps=6 format=3 uid="uid://p3bw6uwqedw2"]
+
+[ext_resource type="Script" uid="uid://denemyentity1" path="res://scripts/resources/enemy_entity.gd" id="1_enemy"]
+[ext_resource type="Script" uid="uid://caved0l2c4nol" path="res://scripts/resources/trait_data.gd" id="2_trait"]
+[ext_resource type="SpriteFrames" uid="uid://b5kx0hbossfrm" path="res://resources/characters/boss_test_frames.tres" id="3_1yjo1"]
+
+[sub_resource type="Resource" id="Resource_attitude"]
+script = ExtResource("2_trait")
+drawbacks = Array[String](["Slow"])
+keywords = Array[String](["Vigilant", "Steady"])
+description = "Holds the line, hard to break through."
+die = 2
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[sub_resource type="Resource" id="Resource_shield"]
+script = ExtResource("2_trait")
+drawbacks = Array[String](["telegraphed"])
+keywords = Array[String](["push", "block"])
+description = "A sturdy shield bash that staggers."
+die = 1
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[resource]
+script = ExtResource("1_enemy")
+name = "Guard"
+sprite = ExtResource("3_1yjo1")
+attitude = SubResource("Resource_attitude")
+focus_traits = Dictionary[String, ExtResource("2_trait")]({
+"Shield Bash": SubResource("Resource_shield")
+})
+metadata/_custom_type_script = "uid://denemyentity1"

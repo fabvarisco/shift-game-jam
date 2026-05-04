@@ -29,6 +29,10 @@ window/per_pixel_transparency/allowed=true
 
 enabled=PackedStringArray("res://addons/rpg_dialog_system/plugin.cfg")
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/rpg_dialog_system/dialogs/example.en.translation", "res://addons/rpg_dialog_system/dialogs/example.pt_BR.translation")
+
 [network]
 
 tls/certificate_bundle_override="/etc/ssl/certs/ca-certificates.crt"

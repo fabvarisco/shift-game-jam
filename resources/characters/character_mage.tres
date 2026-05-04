@@ -1,31 +1,53 @@
-[gd_resource type="Resource" script_class="EntityStats" load_steps=7 format=3 uid="uid://b2magetst001"]
+[gd_resource type="Resource" script_class="EntityCharacter" load_steps=9 format=3 uid="uid://b2magetst001"]
 
-[ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_stats.gd" id="1_stats"]
+[ext_resource type="Script" uid="uid://sfm8we7pk5aa" path="res://scripts/resources/entity_character.gd" id="1_stats"]
 [ext_resource type="Script" uid="uid://caved0l2c4nol" path="res://scripts/resources/trait_data.gd" id="2_trait"]
 [ext_resource type="SpriteFrames" uid="uid://bed1pkh2mlun8" path="res://assets/placeholder/heroTest/hero_test.tres" id="3_frames"]
 
 [sub_resource type="Resource" id="Resource_body"]
 script = ExtResource("2_trait")
 drawbacks = Array[String](["Frail"])
+description = "A body neglected in favor of study — easily worn down."
+die = 3
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
-[sub_resource type="Resource" id="Resource_mental"]
+[sub_resource type="Resource" id="Resource_focus_primary"]
 script = ExtResource("2_trait")
-keywords = Array[String](["Arcane", "Scholar"])
-dice = 3
+drawbacks = Array[String](["draining"])
+keywords = Array[String](["blast", "enchant"])
+description = "Raw magical power channeled through years of grueling study."
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[sub_resource type="Resource" id="Resource_focus_secondary"]
+script = ExtResource("2_trait")
+keywords = Array[String](["decipher", "identify"])
+description = "An ancient compendium of arcane lore and forgotten secrets."
+die = 1
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[sub_resource type="Resource" id="Resource_mind"]
+script = ExtResource("2_trait")
+keywords = Array[String](["Arcane", "Analytical"])
+description = "A sharp intellect attuned to the patterns of magic and the world."
+die = 1
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [sub_resource type="Resource" id="Resource_soul"]
 script = ExtResource("2_trait")
 keywords = Array[String](["Curious"])
-dice = 1
+description = "A deep fascination with the unknown that borders on recklessness."
+die = 2
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [resource]
 script = ExtResource("1_stats")
 name = "Mage"
 sprite = ExtResource("3_frames")
-mental = SubResource("Resource_mental")
+mind = SubResource("Resource_mind")
 body = SubResource("Resource_body")
 soul = SubResource("Resource_soul")
-metadata/_custom_type_script = "uid://crxa525j8eiet"
+focus_traits = Dictionary[String, ExtResource("2_trait")]({
+"Arcane Mastery": SubResource("Resource_focus_primary"),
+"Tome of Secrets": SubResource("Resource_focus_secondary")
+})
+metadata/_custom_type_script = "uid://entitychar001"

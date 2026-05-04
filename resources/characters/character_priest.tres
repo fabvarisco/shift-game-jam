@@ -1,33 +1,53 @@
-[gd_resource type="Resource" script_class="EntityStats" load_steps=7 format=3 uid="uid://b3priesttst1"]
+[gd_resource type="Resource" script_class="EntityCharacter" load_steps=9 format=3 uid="uid://b3priesttst1"]
 
-[ext_resource type="Script" uid="uid://crxa525j8eiet" path="res://scripts/resources/entity_stats.gd" id="1_stats"]
+[ext_resource type="Script" uid="uid://sfm8we7pk5aa" path="res://scripts/resources/entity_character.gd" id="1_stats"]
 [ext_resource type="Script" uid="uid://caved0l2c4nol" path="res://scripts/resources/trait_data.gd" id="2_trait"]
 [ext_resource type="SpriteFrames" uid="uid://bed1pkh2mlun8" path="res://assets/placeholder/heroTest/hero_test.tres" id="3_frames"]
 
 [sub_resource type="Resource" id="Resource_body"]
 script = ExtResource("2_trait")
 keywords = Array[String](["Steady"])
-dice = 1
+description = "A composed presence that holds firm under pressure."
+die = 2
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
-[sub_resource type="Resource" id="Resource_mental"]
+[sub_resource type="Resource" id="Resource_focus_primary"]
 script = ExtResource("2_trait")
-keywords = Array[String](["Wise"])
-dice = 1
+drawbacks = Array[String](["draining"])
+keywords = Array[String](["heal", "bless"])
+description = "Sacred energy that mends wounds and fills allies with divine resolve."
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[sub_resource type="Resource" id="Resource_focus_secondary"]
+script = ExtResource("2_trait")
+keywords = Array[String](["ward", "cleanse"])
+description = "Ancient ceremonies that shield allies and purify corruption."
+die = 1
+metadata/_custom_type_script = "uid://caved0l2c4nol"
+
+[sub_resource type="Resource" id="Resource_mind"]
+script = ExtResource("2_trait")
+description = "Devoted to doctrine rather than independent thought."
+die = 3
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [sub_resource type="Resource" id="Resource_soul"]
 script = ExtResource("2_trait")
 drawbacks = Array[String](["Pacifist"])
 keywords = Array[String](["Devout", "Healer"])
-dice = 3
+description = "A spirit of unwavering faith and compassion, though reluctant to bring harm."
+die = 1
 metadata/_custom_type_script = "uid://caved0l2c4nol"
 
 [resource]
 script = ExtResource("1_stats")
 name = "Priest"
 sprite = ExtResource("3_frames")
-mental = SubResource("Resource_mental")
+mind = SubResource("Resource_mind")
 body = SubResource("Resource_body")
 soul = SubResource("Resource_soul")
-metadata/_custom_type_script = "uid://crxa525j8eiet"
+focus_traits = Dictionary[String, ExtResource("2_trait")]({
+"Divine Light": SubResource("Resource_focus_primary"),
+"Sacred Rituals": SubResource("Resource_focus_secondary")
+})
+metadata/_custom_type_script = "uid://entitychar001"
