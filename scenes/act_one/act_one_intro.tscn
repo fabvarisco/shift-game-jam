@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://vmp2ii2toqg3"]
+
+[ext_resource type="PackedScene" uid="uid://cvbkkmul7gjvp" path="res://scenes/world/world_master.tscn" id="1_d2wrj"]
+[ext_resource type="PackedScene" uid="uid://rd18npya1ycd" path="res://scenes/enviroment/vera_bedroom/vera_window.tscn" id="2_g7jvt"]
+[ext_resource type="PackedScene" uid="uid://36j2al3qkpi6" path="res://scenes/enviroment/vera_bedroom/bed.tscn" id="2_pldx6"]
+[ext_resource type="PackedScene" uid="uid://cv5bvgld7xkgy" path="res://scenes/enviroment/vera_bedroom/vera_bed_room_wall.tscn" id="3_j35fm"]
+
+[sub_resource type="Environment" id="Environment_j35fm"]
+
+[node name="ActOneIntro" instance=ExtResource("1_d2wrj")]
+
+[node name="Floor" parent="." index="0"]
+transform = Transform3D(1.1693699, 0, 0, 0, 1, 0, 0, 0, 0.38948166, 0, 0, 0)
+
+[node name="Camera3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074706614, 0.15429959, 0.5772039)
+environment = SubResource("Environment_j35fm")
+fov = 44.546173
+
+[node name="VeraWindow" parent="Enviroment" index="0" instance=ExtResource("2_g7jvt")]
+transform = Transform3D(0.27886665, 0, 0, 0, 0.16761753, 0, 0, 0, 0.031888083, 0, 0.14888516, -0.39381075)
+
+[node name="VeraBedRoomWall" parent="Enviroment" index="1" instance=ExtResource("3_j35fm")]
+transform = Transform3D(2.7719822, 0, 0, 0, 1.3104627, 0, 0, 0, 0.016577156, 0.060881425, 0.23413265, -0.41466916)
+skeleton = NodePath("../..")
+
+[node name="VeraBedRoomWall2" parent="Enviroment" index="2" instance=ExtResource("3_j35fm")]
+transform = Transform3D(0.18684761, 0, 0.016539456, 0, 1.3104628, 0, -2.7656782, 0, 0.001117396, -0.5592777, 0.23413265, -0.41466916)
+skeleton = NodePath("../..")
+
+[node name="VeraBedRoomWall3" parent="Enviroment" index="3" instance=ExtResource("3_j35fm")]
+transform = Transform3D(0.18684761, 0, 0.016539456, 0, 1.3104628, 0, -2.7656782, 0, 0.001117396, 0.48991638, 0.23413265, -0.41466916)
+skeleton = NodePath("../..")
+
+[node name="Bed" parent="Enviroment" index="4" instance=ExtResource("2_pldx6")]
+transform = Transform3D(0.18516034, 0, 0, 0, 0.043581784, 0, 0, 0, 0.35570306, -0.36459824, 0, -0.17509443)
+skeleton = NodePath("../..")
