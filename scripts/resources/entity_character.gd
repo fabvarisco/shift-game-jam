@@ -1,8 +1,11 @@
 class_name EntityCharacter
 extends Resource
 
+enum CrewClass { GENERALIST, ENGINEER, COMBAT_SPECIALIST, MEDIC, PILOT }
+
 @export var name: String
 @export var sprite: SpriteFrames
+@export var crew_class: CrewClass = CrewClass.GENERALIST
 
 @export_group("Core Traits")
 @export var mind: TraitData = TraitData.new()

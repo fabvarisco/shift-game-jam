@@ -308,8 +308,18 @@ func _on_log_message(text: String) -> void:
 
 func _on_combat_ended(player_won: bool) -> void:
 	action_panel.visible = false
-	phase_label.text = "VITÓRIA! 🏆" if player_won else "DERROTA..."
+	phase_label.text = "VITÓRIA!" if player_won else "DERROTA..."
 	_on_log_message("=== %s ===" % phase_label.text)
+	var outcome := "A batalha terminou. A tripulação retorna à nave." if player_won \
+		else "A tripulação foi derrotada. Retornando à nave..."
+	_show_result_panel(
+		"VITÓRIA!" if player_won else "DERROTA",
+		"",
+		outcome,
+		func():
+			result_panel.visible = false
+			World.return_from_combat()
+	)
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 

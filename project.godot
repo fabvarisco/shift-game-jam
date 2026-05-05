@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Player="*res://scripts/singletons/player.gd"
 World="*res://scripts/singletons/world.gd"
+GameState="*res://scripts/singletons/game_state.gd"
 DialogManager="*res://addons/rpg_dialog_system/dialog_manager.gd"
 
 [display]
