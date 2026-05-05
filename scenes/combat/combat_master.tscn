@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2j67qiy4o7p3"]
+[gd_scene load_steps=5 format=3 uid="uid://d2j67qiy4o7p3"]
 
-[ext_resource type="PackedScene" uid="uid://ct5i8gwhnjwpg" path="res://scenes/enviroment/floor.tscn" id="1_gs0pq"]
 [ext_resource type="Script" uid="uid://bmpv346a56miu" path="res://scripts/combat/combat_master.gd" id="1_ttqmc"]
 [ext_resource type="PackedScene" uid="uid://du48cpbxgkshn" path="res://scenes/combat/combat_ui.tscn" id="3_combatui"]
 [ext_resource type="Script" uid="uid://dturnmanager1" path="res://scripts/combat/combat_turn_manager.gd" id="4_turnmgr"]
@@ -13,9 +12,6 @@ ambient_light_color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 script = ExtResource("1_ttqmc")
 
 [node name="Enviroment" type="Node3D" parent="."]
-
-[node name="Floor" parent="Enviroment" instance=ExtResource("1_gs0pq")]
-skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.96426207, 0.2649503, 0, -0.2649503, 0.96426207, 0, 0.41675848, 1.2831707)

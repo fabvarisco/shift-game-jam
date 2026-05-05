@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5vudkpymw8jq"]
+
+[ext_resource type="MeshLibrary" uid="uid://1cdkogvdmweh" path="res://grid_map/blocks/blocks_ml.tres" id="1_gyt78"]
+
+[sub_resource type="Environment" id="Environment_gyt78"]
+
+[node name="SpaceShipChunkMaster" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_gyt78")
+cell_size = Vector3(1, 1, 1)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3700187, 0.47346252)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gyt78")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
