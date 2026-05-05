@@ -126,13 +126,13 @@ func _on_result_dismissed(result_data: Dictionary, actor: EntityCombat, target: 
 func _get_unacted_players() -> Array[EntityCombat]:
 	var result: Array[EntityCombat] = []
 	for p in player_entities:
-		if not p.acted and (p.combat_state == null or not p.combat_state.is_core_exhausted()):
+		if not p.acted and not p.is_defeated():
 			result.append(p)
 	return result
 
 func _get_alive_enemies() -> Array[EntityCombat]:
 	var result: Array[EntityCombat] = []
 	for e in enemy_entities:
-		if e.combat_state == null or not e.combat_state.is_core_exhausted():
+		if not e.is_defeated():
 			result.append(e)
 	return result

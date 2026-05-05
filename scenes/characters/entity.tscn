@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bof5l58yuu6er"]
+
+[ext_resource type="SpriteFrames" uid="uid://bed1pkh2mlun8" path="res://assets/placeholder/heroTest/hero_test.tres" id="1_0hhro"]
+
+[node name="Entity" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106853485, 0)
+texture_filter = 0
+sprite_frames = ExtResource("1_0hhro")
