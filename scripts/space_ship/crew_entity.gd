@@ -2,6 +2,9 @@ class_name CrewEntity
 extends CharacterBody3D
 
 signal interacted(entity: CrewEntity)
+signal task_destination_reached()
+
+enum State { IDLE, ON_TASK }
 
 @export var data: EntityCharacter:
 	set(value):
@@ -21,7 +24,8 @@ signal interacted(entity: CrewEntity)
 var _nav_agent: NavigationAgent3D
 var _chunk_center: Vector3 = Vector3.ZERO
 var _half_width: float = 3.0
-var _wandering: bool = false
+var _state: State = State.IDLE
+var _moving: bool = false
 
 func _ready() -> void:
 	_setup_navigation()
@@ -38,47 +42,53 @@ func _setup_navigation() -> void:
 
 	_nav_agent.path_desired_distance = 0.3
 	_nav_agent.target_desired_distance = 0.5
-	_nav_agent.avoidance_enabled = true
 	_nav_agent.navigation_finished.connect(_on_navigation_finished)
-	_nav_agent.velocity_computed.connect(_on_velocity_computed)
 
 func _physics_process(delta: float) -> void:
 	if use_gravity and not is_on_floor():
 		velocity.y -= gravity_strength * delta
 
-	if _wandering and not _nav_agent.is_navigation_finished():
+	if _moving and not _nav_agent.is_navigation_finished():
 		var next_pos: Vector3 = _nav_agent.get_next_path_position()
 		var dir: Vector3 = next_pos - global_position
 		dir.y = 0.0
-		dir = dir.normalized()
-
-		if not is_zero_approx(dir.x):
-			sprite.scale.x = signf(dir.x) * absf(sprite.scale.x)
-
-		_nav_agent.set_velocity(dir * move_speed)
+		var dist := dir.length()
+		if dist > 0.05:
+			dir = dir / dist
+			velocity.x = dir.x * move_speed
+			velocity.z = dir.z * move_speed
+			if not is_zero_approx(dir.x):
+				sprite.scale.x = signf(dir.x) * absf(sprite.scale.x)
+		else:
+			velocity.x = 0.0
+			velocity.z = 0.0
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, move_speed)
-		velocity.z = move_toward(velocity.z, 0.0, move_speed)
+		velocity.x = 0.0
+		velocity.z = 0.0
 
 	move_and_slide()
 
-func _on_velocity_computed(safe_velocity: Vector3) -> void:
-	velocity.x = safe_velocity.x
-	velocity.z = safe_velocity.z
+# ── Public API ─────────────────────────────────────────────────────────────────
 
-# ── Public navigation API ──────────────────────────────────────────────────────
+## Send crew to a specific world position for a task. Pauses idle wandering.
+## Emits task_destination_reached when the crew arrives.
+func go_to_task(target: Vector3) -> void:
+	_state = State.ON_TASK
+	_navigate(target)
 
-## Move toward an arbitrary world-space position via the navigation mesh.
-## Requires a NavigationRegion3D with a baked mesh in the scene tree.
-func navigate_to(target: Vector3) -> void:
-	_wandering = true
-	_nav_agent.set_target_position(target)
+## Call after a task finishes to resume idle wandering.
+func return_to_idle() -> void:
+	_state = State.IDLE
+	_pick_next_wander_target()
 
-func stop_navigation() -> void:
-	_wandering = false
+func stop() -> void:
+	_moving = false
 	velocity = Vector3.ZERO
 
-# ── Wander behaviour ───────────────────────────────────────────────────────────
+func is_idle() -> bool:
+	return _state == State.IDLE
+
+# ── Wander (IDLE state) ────────────────────────────────────────────────────────
 
 func assign_to_chunk(chunk_center: Vector3, half_width: float) -> void:
 	_chunk_center = chunk_center
@@ -94,18 +104,28 @@ func _pick_next_wander_target() -> void:
 		_chunk_center.y,
 		_chunk_center.z
 	)
-	navigate_to(target)
-
-func _on_navigation_finished() -> void:
-	_wandering = false
-	velocity.x = 0.0
-	velocity.z = 0.0
-	_schedule_next_wander()
+	_navigate(target)
 
 func _schedule_next_wander() -> void:
 	await get_tree().create_timer(randf_range(1.0, 3.5)).timeout
-	if is_inside_tree():
+	if is_inside_tree() and _state == State.IDLE:
 		_pick_next_wander_target()
+
+# ── Navigation internals ───────────────────────────────────────────────────────
+
+func _navigate(target: Vector3) -> void:
+	_moving = true
+	_nav_agent.set_target_position(target)
+
+func _on_navigation_finished() -> void:
+	_moving = false
+	velocity.x = 0.0
+	velocity.z = 0.0
+	match _state:
+		State.IDLE:
+			_schedule_next_wander()
+		State.ON_TASK:
+			task_destination_reached.emit()
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 

@@ -21,6 +21,7 @@ var _cameras: Array[Camera3D] = []
 var _current_idx: int = 0
 var _chunk_positions: Array[Vector3] = []
 var _crew_entities: Array[CrewEntity] = []
+var _nav_region: NavigationRegion3D
 
 # HUD nodes (built in code to avoid .tscn dependency)
 var _hud: CanvasLayer
@@ -36,18 +37,52 @@ var _encounter_desc: Label
 var _encounter_actions_box: VBoxContainer
 
 func _ready() -> void:
+	_setup_navmesh()
 	_spawn_chunks()
-	_spawn_crew()
 	_setup_global_camera()
 	_activate_camera(0)
 	_build_hud()
 	_connect_game_state()
-	# If returning from a combat encounter, continue processing the queue
+	# Bake async; crew spawns once the mesh is ready so paths work immediately
+	_nav_region.bake_finished.connect(_on_navmesh_baked, CONNECT_ONE_SHOT)
+	_nav_region.bake_navigation_mesh(true)
+
+func _on_navmesh_baked() -> void:
+	_spawn_crew()
+	_crew_roster.populate(_crew_entities)
 	if GameState.current_phase == GameState.Phase.ENCOUNTER_PHASE:
 		call_deferred("_continue_encounter_queue")
 
 func _continue_encounter_queue() -> void:
 	GameState.acknowledge_encounter()
+
+func _setup_navmesh() -> void:
+	_nav_region = NavigationRegion3D.new()
+	_nav_region.name = "NavigationRegion"
+	add_child(_nav_region)
+
+	var nav_mesh := NavigationMesh.new()
+
+	# Match crew capsule dimensions (radius 0.15, height 0.7) with clearance
+	nav_mesh.agent_radius = 0.2
+	nav_mesh.agent_height = 0.8
+	nav_mesh.agent_max_climb = 0.25
+	nav_mesh.agent_max_slope = 30.0  # only flat surfaces; ignores walls
+
+	# Cell resolution — smaller = more precise but slower to bake
+	nav_mesh.cell_size = 0.2
+	nav_mesh.cell_height = 0.1
+
+	# GridMap creates static collision via PhysicsServer; capture those shapes
+	nav_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_STATIC_COLLIDERS
+	# GROUPS_WITH_CHILDREN scans children of every node in the group "navmesh_source".
+	# Each spawned chunk is added to that group in _spawn_chunks(), so the GridMap
+	# inside each chunk is included in the bake.
+	nav_mesh.geometry_source_geometry_mode = NavigationMesh.SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN
+	nav_mesh.geometry_source_group_name = &"navmesh_source"
+	nav_mesh.geometry_collision_mask = 1
+
+	_nav_region.navigation_mesh = nav_mesh
 
 # ── HUD ────────────────────────────────────────────────────────────────────────
 
@@ -133,7 +168,6 @@ func _build_hud() -> void:
 	_encounter_actions_box = VBoxContainer.new()
 	enc_vbox.add_child(_encounter_actions_box)
 
-	_crew_roster.populate(_crew_entities)
 	_crew_roster.crew_selected.connect(_on_roster_crew_selected)
 
 	_update_phase_hud(GameState.current_phase)
@@ -322,6 +356,7 @@ func _spawn_chunks() -> void:
 			var scene_idx := (row * grid_columns + col) % chunk_scenes.size()
 			var chunk := chunk_scenes[scene_idx].instantiate()
 			add_child(chunk)
+			chunk.add_to_group("navmesh_source")
 			var pos := Vector3(col * chunk_spacing_x, -row * chunk_spacing_y, 0.0)
 			chunk.position = pos
 			_chunk_positions.append(pos)
