@@ -43,6 +43,7 @@ func _register_existing(parent: Node3D, is_player_side: bool) -> void:
 	for child in parent.get_children():
 		if child is EntityCombat and child not in combat_order:
 			combat_order.append(child)
+			child.trait_exhausted.connect(_on_entity_trait_exhausted)
 			if is_player_side:
 				child.is_player = true
 				child.selected.connect(_on_entity_selected)
@@ -57,6 +58,7 @@ func _spawn_party(party: Array, parent: Node3D, side: float) -> void:
 		entity.position = Vector3(side * 0.5, 0, (i - (party.size() - 1) / 2.0) * PARTY_SPACING)
 		parent.add_child(entity)
 		combat_order.append(entity)
+		entity.trait_exhausted.connect(_on_entity_trait_exhausted)
 		if parent == player_party_node:
 			entity.is_player = true
 			entity.selected.connect(_on_entity_selected)
@@ -129,6 +131,10 @@ func _get_unacted_players() -> Array[EntityCombat]:
 		if not p.acted and not p.is_defeated():
 			result.append(p)
 	return result
+
+func _on_entity_trait_exhausted(entity: EntityCombat, slot: String) -> void:
+	turn_manager.log_message.emit("💀 %s: %s esgotado — KO!" % [entity.get_display_name(), slot])
+	combat_ui.refresh_traits(entity)
 
 func _get_alive_enemies() -> Array[EntityCombat]:
 	var result: Array[EntityCombat] = []

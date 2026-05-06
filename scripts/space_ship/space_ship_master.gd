@@ -73,14 +73,14 @@ func _setup_navmesh() -> void:
 	nav_mesh.cell_size = 0.2
 	nav_mesh.cell_height = 0.1
 
-	# GridMap creates static collision via PhysicsServer; capture those shapes
-	nav_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_STATIC_COLLIDERS
+	# GridMap geometry is only captured via MESH_INSTANCES, not STATIC_COLLIDERS.
+	# PARSED_GEOMETRY_STATIC_COLLIDERS does not pick up GridMap tiles in Godot 4.
+	nav_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_MESH_INSTANCES
 	# GROUPS_WITH_CHILDREN scans children of every node in the group "navmesh_source".
 	# Each spawned chunk is added to that group in _spawn_chunks(), so the GridMap
 	# inside each chunk is included in the bake.
 	nav_mesh.geometry_source_geometry_mode = NavigationMesh.SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN
 	nav_mesh.geometry_source_group_name = &"navmesh_source"
-	nav_mesh.geometry_collision_mask = 1
 
 	_nav_region.navigation_mesh = nav_mesh
 

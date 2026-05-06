@@ -13,6 +13,8 @@ enum State { IDLE, ON_TASK }
 			_apply_data()
 
 @export var move_speed: float = 2.0
+## How far crew wanders in depth (Z axis) relative to chunk center
+@export var z_wander_range: float = 1.5
 ## Disable for flat ship floors that don't need gravity simulation
 @export var use_gravity: bool = false
 @export var gravity_strength: float = 9.8
@@ -59,12 +61,15 @@ func _physics_process(delta: float) -> void:
 			velocity.z = dir.z * move_speed
 			if not is_zero_approx(dir.x):
 				sprite.scale.x = signf(dir.x) * absf(sprite.scale.x)
+			_set_anim("walk")
 		else:
 			velocity.x = 0.0
 			velocity.z = 0.0
+			_set_anim("idle")
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
+		_set_anim("idle")
 
 	move_and_slide()
 
@@ -102,7 +107,7 @@ func _pick_next_wander_target() -> void:
 	var target := Vector3(
 		_chunk_center.x + randf_range(-_half_width, _half_width),
 		_chunk_center.y,
-		_chunk_center.z
+		_chunk_center.z + randf_range(-z_wander_range, z_wander_range)
 	)
 	_navigate(target)
 
@@ -128,6 +133,16 @@ func _on_navigation_finished() -> void:
 			task_destination_reached.emit()
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
+
+func _set_anim(anim: String) -> void:
+	if sprite.sprite_frames == null:
+		return
+	if sprite.animation == anim:
+		return
+	if sprite.sprite_frames.has_animation(anim):
+		sprite.play(anim)
+	elif anim == "walk" and sprite.sprite_frames.has_animation("default"):
+		sprite.play("default")
 
 func _apply_data() -> void:
 	if data == null:

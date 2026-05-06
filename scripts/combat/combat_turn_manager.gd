@@ -105,7 +105,7 @@ func acknowledge_enemy_action(target: EntityCombat, result_data: Dictionary, hit
 	match res:
 		System.Results.CRITICAL_SUCCESS, System.Results.SUCCESS, System.Results.MITIGATED_SUCCESS:
 			if hit_trait != "":
-				target.combat_state.shift_down(hit_trait)
+				target.shift_trait_down(hit_trait)
 				log_message.emit("  → %s: %s desceu" % [target.get_display_name(), hit_trait])
 				if _check_player_defeated(target) and current_phase == Phase.COMBAT_END:
 					return
@@ -120,12 +120,12 @@ func _shift_target_trait_down(target: EntityCombat, trait_name: String, double_s
 		trait_name = target.combat_state.get_strongest_available()
 	if trait_name == "":
 		return
-	target.combat_state.shift_down(trait_name)
+	target.shift_trait_down(trait_name)
 	log_message.emit("  → %s: %s desceu" % [target.get_display_name(), trait_name])
 	if double_shift:
 		var trait2 := target.combat_state.get_strongest_available()
 		if trait2 != "":
-			target.combat_state.shift_down(trait2)
+			target.shift_trait_down(trait2)
 			log_message.emit("  → %s: %s também desceu (bônus crítico)" % [target.get_display_name(), trait2])
 
 func _check_enemy_defeated(enemy: EntityCombat) -> bool:
