@@ -90,6 +90,12 @@ func stop() -> void:
 	_moving = false
 	velocity = Vector3.ZERO
 
+## Place at position without triggering wander — used by tactics mode.
+func place_stationary(pos: Vector3) -> void:
+	_state = State.ON_TASK
+	global_position = pos
+	stop()
+
 func is_idle() -> bool:
 	return _state == State.IDLE
 

@@ -1,7 +1,7 @@
 class_name EncounterEvent
 extends Resource
 
-enum EventType { COMBAT, HAZARD, SOCIAL }
+enum EventType { COMBAT, HAZARD, SOCIAL, INVASION }
 
 @export var type: EventType = EventType.HAZARD
 @export var title: String = ""

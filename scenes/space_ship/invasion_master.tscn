@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcinvasionmstr"]
+
+[ext_resource type="Script" path="res://scripts/space_ship/invasion_master.gd" id="1_inv"]
+[ext_resource type="PackedScene" uid="uid://ci5bvn1o8f75u" path="res://scenes/space_ship/space_ship_chunks/space_ship_chunk_01.tscn" id="2_inv"]
+[ext_resource type="PackedScene" uid="uid://b8fvkh6qxkcnr" path="res://scenes/space_ship/space_ship_chunks/space_ship_chunk_02.tscn" id="3_inv"]
+[ext_resource type="PackedScene" uid="uid://bxtvxm1xddot8" path="res://scenes/space_ship/space_ship_chunks/space_ship_chunk_03.tscn" id="4_inv"]
+[ext_resource type="PackedScene" uid="uid://dakjlqdjtni1n" path="res://scenes/space_ship/crew_entity.tscn" id="5_inv"]
+
+[node name="InvasionMaster" type="Node3D"]
+script = ExtResource("1_inv")
+grid_columns = 3
+grid_rows = 2
+chunk_scenes = Array[PackedScene]([ExtResource("2_inv"), ExtResource("3_inv"), ExtResource("4_inv")])
+crew_scene = ExtResource("5_inv")
+
+[node name="GlobalCamera" type="Camera3D" parent="."]

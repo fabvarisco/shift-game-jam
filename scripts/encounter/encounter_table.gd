@@ -68,4 +68,16 @@ static func _build_table() -> Array[EncounterEvent]:
 	e5.challenge_trait = "mind"
 	table.append(e5)
 
+	var e6 := EncounterEvent.new()
+	e6.type = EncounterEvent.EventType.INVASION
+	e6.title = "Nave Inimiga Detectada"
+	e6.description = "Uma nave inimiga aparece no radar. Hora de invadir!"
+	e6.weight = 15
+	var ep6: Array = [
+		load("res://resources/characters/enemy_grunt.tres"),
+		load("res://resources/characters/enemy_guard.tres"),
+	]
+	e6.enemy_party = ep6
+	table.append(e6)
+
 	return table

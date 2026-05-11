@@ -252,6 +252,8 @@ func _on_encounter_started(event: EncounterEvent) -> void:
 	match event.type:
 		EncounterEvent.EventType.COMBAT:
 			_start_combat_encounter(event)
+		EncounterEvent.EventType.INVASION:
+			_start_invasion_encounter(event)
 		EncounterEvent.EventType.HAZARD, EncounterEvent.EventType.SOCIAL:
 			_show_noncombat_encounter(event)
 
@@ -261,6 +263,13 @@ func _start_combat_encounter(event: EncounterEvent) -> void:
 		if e is EnemyEntity:
 			enemies.append(e as EnemyEntity)
 	World.start_combat(enemies)
+
+func _start_invasion_encounter(event: EncounterEvent) -> void:
+	var enemies: Array[EnemyEntity] = []
+	for e in event.enemy_party:
+		if e is EnemyEntity:
+			enemies.append(e as EnemyEntity)
+	World.start_invasion(enemies)
 
 func _show_noncombat_encounter(event: EncounterEvent) -> void:
 	_clear_encounter_actions()
@@ -415,5 +424,11 @@ func _input(event: InputEvent) -> void:
 			next = 1
 		_activate_camera(next)
 	elif event is InputEventKey and (event as InputEventKey).pressed:
-		if (event as InputEventKey).keycode == KEY_SPACE:
-			_activate_camera(0)
+		match (event as InputEventKey).keycode:
+			KEY_SPACE:
+				_activate_camera(0)
+			KEY_I:
+				World.start_invasion([
+					load("res://resources/characters/enemy_grunt.tres"),
+					load("res://resources/characters/enemy_guard.tres"),
+				])
