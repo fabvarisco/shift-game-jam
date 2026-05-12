@@ -251,7 +251,9 @@ func _restore_all_crew_sprites() -> void:
 func _on_encounter_started(event: EncounterEvent) -> void:
 	match event.type:
 		EncounterEvent.EventType.COMBAT:
-			_start_combat_encounter(event)
+			# TODO: combate isolado por turno desativado temporariamente
+			#_start_combat_encounter(event)
+			_start_invasion_encounter(event)
 		EncounterEvent.EventType.INVASION:
 			_start_invasion_encounter(event)
 		EncounterEvent.EventType.HAZARD, EncounterEvent.EventType.SOCIAL:
@@ -374,13 +376,18 @@ func _spawn_chunks() -> void:
 				_cameras.append(cam)
 
 func _spawn_crew() -> void:
-	if crew_scene == null or initial_crew.is_empty():
+	if crew_scene == null:
 		return
-	Player.player_party = initial_crew
-	for i in initial_crew.size():
+	var crew_list: Array = Player.player_party if not Player.player_party.is_empty() \
+						   else initial_crew
+	if crew_list.is_empty():
+		return
+	if Player.player_party.is_empty():
+		Player.player_party = crew_list
+	for i in crew_list.size():
 		var member: CrewEntity = crew_scene.instantiate() as CrewEntity
 		add_child(member)
-		member.set("data", initial_crew[i])
+		member.set("data", crew_list[i])
 		var chunk_pos := _chunk_positions[i % _chunk_positions.size()]
 		var crew_pos := Vector3(chunk_pos.x, chunk_pos.y + 0.8, chunk_pos.z - crew_depth_offset)
 		member.call("assign_to_chunk", crew_pos, chunk_spacing_x * 0.4)

@@ -3,6 +3,7 @@ extends Node
 const COMBAT_SCENE: PackedScene = preload("res://scenes/combat/combat_master.tscn")
 const SHIP_SCENE_PATH: String = "res://scenes/space_ship/space_ship_master.tscn"
 const INVASION_SCENE_PATH: String = "res://scenes/space_ship/invasion_master.tscn"
+const TITLE_SCENE_PATH: String = "res://scenes/title_screen/title_screen.tscn"
 
 var pending_enemy_party: Array[EnemyEntity] = []
 var _return_scene_path: String = ""
@@ -21,3 +22,12 @@ func start_invasion(enemy_party: Array[EnemyEntity]) -> void:
 
 func end_invasion() -> void:
 	get_tree().change_scene_to_file(SHIP_SCENE_PATH)
+
+func start_game() -> void:
+	Player.reset_party()
+	GameState.reset()
+	RunTracker.begin_run(Player.player_party)
+	get_tree().change_scene_to_file(SHIP_SCENE_PATH)
+
+func go_to_title() -> void:
+	get_tree().change_scene_to_file(TITLE_SCENE_PATH)

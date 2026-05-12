@@ -44,8 +44,15 @@ func _start_new_player_turn() -> void:
 	turn_number += 1
 	_crew_acted.clear()
 	all_encounters_resolved.emit()
+	RunTracker.record_turn()
 	_set_phase(Phase.PLAYER_PHASE)
 	turn_started.emit(turn_number)
+
+func reset() -> void:
+	turn_number = 1
+	_crew_acted.clear()
+	encounter_queue.clear()
+	_set_phase(Phase.PLAYER_PHASE)
 
 func _set_phase(phase: Phase) -> void:
 	current_phase = phase

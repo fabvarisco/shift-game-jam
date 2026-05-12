@@ -1,0 +1,1 @@
+- [SHIFT Combat Rules](shift_combat_rules.md) — Core combat mechanics: action declaration, resolution table, turn order phases, consequence table
